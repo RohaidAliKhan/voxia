@@ -282,11 +282,31 @@ toggleBtn.addEventListener("click", () => {
 
         const messages = data.messages;
         // const chat = document.querySelector('.chat');
+        // const html = messages
+        //   .map((message) => {
+        //     return `<div class="message ${message.role}">${message.content}</div>`;
+        //   })
+        //   .join("");
+
+        const assistantImageSrc = 'https://assets-global.website-files.com/65a4d59d0bcfc7e70694b41e/65a803c22985f025c07f6251_transcript-ai%20%E2%80%94%20use%20Screen%20effect!.gif';
+        const userImageSrc = 'https://assets-global.website-files.com/65a4d59d0bcfc7e70694b41e/65bbde34eeaa4cb73ed5f42c_YOU.svg';
+        
         const html = messages
-          .map((message) => {
-            return `<div class="message ${message.role}">${message.content}</div>`;
-          })
-          .join("");
+        .map((message) => {
+        const roleClass = message.role === "assistant" ? "chat_assistant" : "chat_user";
+        const imageSrc = message.role === "assistant" ? assistantImageSrc : userImageSrc;
+        
+        return `<div class="${roleClass}">
+              <img src="${imageSrc}" 
+                   loading="lazy" 
+                   alt="" 
+                   class="chat_icon">
+              <div class="chat_text-wrap">
+                <div class="chat_text">${message.content}</div>
+              </div>
+            </div>`;
+        })
+        .join("");
         chatMessagesContainer.innerHTML = html;
       } else if (data.event === "end") {
         callEndEvt();
