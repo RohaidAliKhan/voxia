@@ -308,6 +308,7 @@ toggleBtn.addEventListener("click", () => {
         })
         .join("");
         chatMessagesContainer.innerHTML = html;
+        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
       } else if (data.event === "end") {
         callEndEvt();
       }
