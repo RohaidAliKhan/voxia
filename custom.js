@@ -298,7 +298,7 @@ sections.forEach((section, i) => {
   // };
 
   openPopupButtons.forEach(button => {
-    button.addEventListener('click', function{
+    button.addEventListener('click', (e) => {
       e.preventDefault();
 
       if (heroMainCont) {
