@@ -30,18 +30,7 @@ requestAnimationFrame(raf);
 // Sticky Sections
 const sections = gsap.utils.toArray(".sticky_section");
 sections.forEach((section, i) => {
-  gsap.to(section, {
-    y: 30,
-    scrollTrigger: {
-      trigger: section,
-      scrub: true,
-      start: "bottom bottom",
-      pin: true,
-      pinSpacing: false,
-    },
-  });
-
-  // Check if the section is at an even index (alternating sections)
+    // Check if the section is at an even index (alternating sections)
   const isEven = i % 2 === 0;
   ScrollTrigger.create({
     trigger: section,
@@ -71,54 +60,7 @@ sections.forEach((section, i) => {
   });
 });
 
-// Feature section toggle
-const toggleBtn = document.querySelector(".feature_toggle");
-const toggleKnob = toggleBtn.querySelector(".feature_knob");
-const headings = document.querySelectorAll(".feature_headings");
-const tabContents = document.querySelectorAll(".feature_card-wrap");
-const tabToggleAnimation = gsap.timeline();
-const toggleSwitchAnimation = gsap.timeline({ paused: true });
-let headingCurrentIndex = 0;
 
-// Toggle Switch
-toggleSwitchAnimation.to(toggleKnob, { xPercent: 79 });
-// Stagger cards on tab show
-tabToggleAnimation.from(".feature_card", {
-  stagger: 0.1,
-  autoAlpha: 0,
-  x: 30,
-  ease: "power4.out",
-});
-
-const toggleComboClass = () => {
-  headings.forEach((heading, index) => {
-    if (index === headingCurrentIndex) {
-      heading.classList.toggle("is-text-color");
-    } else {
-      heading.classList.remove("is-text-color");
-    }
-  });
-
-  headingCurrentIndex = (headingCurrentIndex + 1) % headings.length;
-};
-function toggleTabs() {
-  tabToggleAnimation.play(0);
-
-  const currentTab = document.querySelector(".feature_card-wrap.active");
-  const nextTabId = currentTab.id === "tab1" ? "tab2" : "tab1";
-  const nextTab = document.querySelector("#" + nextTabId);
-
-  currentTab.classList.remove("active");
-  nextTab.classList.add("active");
-}
-
-toggleBtn.addEventListener("click", () => {
-  toggleSwitchAnimation.progress() == 1
-    ? toggleSwitchAnimation.reverse()
-    : toggleSwitchAnimation.play();
-  toggleComboClass();
-  toggleTabs();
-});
 
 (function () {
   const callMeInfoBtn = document.getElementById("call-me-info-btn");
