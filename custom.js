@@ -39,22 +39,24 @@ sections.forEach((section, i) => {
     markers: false, // Remove this line in production
     onToggle: ({ isActive }) => {
       if (isActive && isEven) {
-        gsap.to(":root", {
-          "--base-color-neutral--white-60": "black",
-          "--text-color-dark--text-primary": "black",
-          "--border-color--border-quarternary": "black",
-          "--base-color-neutral--white-24": "rgba(0,0,0,.24)",
-        });
+        // gsap.to(":root", {
+        //   "--base-color-neutral--white-60": "black",
+        //   "--text-color-dark--text-primary": "black",
+        //   "--border-color--border-quarternary": "black",
+        //   "--base-color-neutral--white-24": "rgba(0,0,0,.24)",
+        // });
 
-        gsap.to(".navbar_logo", { filter: "invert(1)" });
+        // gsap.to(".navbar_logo", { filter: "invert(1)" });
+        gsap.to(".navbar.w-nav", { backgroundColor: "black"})
       } else {
-        gsap.to(":root", {
-          "--base-color-neutral--white-60": "rgba(255,255,255,.6)",
-          "--text-color-dark--text-primary": "white",
-          "--border-color--border-quarternary": "rgba(255,255,255,.24)",
-          "--base-color-neutral--white-24": "rgba(255,255,255,.24)",
-        });
-        gsap.to(".navbar_logo", { filter: "invert(0)" });
+        // gsap.to(":root", {
+        //   "--base-color-neutral--white-60": "rgba(255,255,255,.6)",
+        //   "--text-color-dark--text-primary": "white",
+        //   "--border-color--border-quarternary": "rgba(255,255,255,.24)",
+        //   "--base-color-neutral--white-24": "rgba(255,255,255,.24)",
+        // });
+        // gsap.to(".navbar_logo", { filter: "invert(0)" });
+        gsap.to(".navbar.w-nav", { backgroundColor: "transparent"})
       }
     },
   });
@@ -63,8 +65,9 @@ sections.forEach((section, i) => {
 
 
 (function () {
-  const callMeInfoBtn = document.getElementById("call-me-info-btn");
-  const callMeBtn = document.getElementById("header-call-me");
+  // const callMeInfoBtn = document.getElementById("call-me-info-btn");
+  // const callMeBtn = document.getElementById("header-call-me");
+  const openPopupButtons = document.querySelectorAll('[data-target="call"]');
   const endCallBtn = document.getElementById("end-call-btn");
   const changeNumberBtn = document.getElementById("change-number-btn");
   const resendBtn = document.getElementById("resend-btn");
@@ -272,27 +275,40 @@ sections.forEach((section, i) => {
     callEndEvt();
   };
 
-  callMeInfoBtn.onclick = (e) => {
-    e.preventDefault();
+  // callMeInfoBtn.onclick = (e) => {
+  //   e.preventDefault();
 
-    if (heroMainCont) {
-      heroMainCont.classList.add("hide");
-    }
-    if (heroConfirmCont) {
-      heroConfirmCont.classList.remove("hide");
-    }
-  };
+  //   if (heroMainCont) {
+  //     heroMainCont.classList.add("hide");
+  //   }
+  //   if (heroConfirmCont) {
+  //     heroConfirmCont.classList.remove("hide");
+  //   }
+  // };
 
-  callMeBtn.onclick = (e) => {
-    e.preventDefault();
+  // callMeBtn.onclick = (e) => {
+  //   e.preventDefault();
 
-    if (heroMainCont) {
-      heroMainCont.classList.add("hide");
-    }
-    if (heroConfirmCont) {
-      heroConfirmCont.classList.remove("hide");
-    }
-  };
+  //   if (heroMainCont) {
+  //     heroMainCont.classList.add("hide");
+  //   }
+  //   if (heroConfirmCont) {
+  //     heroConfirmCont.classList.remove("hide");
+  //   }
+  // };
+
+  openPopupButtons.forEach(button => {
+    button.addEventListener('click', function{
+      e.preventDefault();
+
+      if (heroMainCont) {
+        heroMainCont.classList.add("hide");
+      }
+      if (heroConfirmCont) {
+        heroConfirmCont.classList.remove("hide");
+      }
+    });
+  });
 
   confirmForm.onsubmit = async (e) => {
     e.preventDefault();
