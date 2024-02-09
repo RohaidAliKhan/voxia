@@ -69,6 +69,7 @@ sections.forEach((section, i) => {
   // const callMeBtn = document.getElementById("header-call-me");
   const openPopupButtons = document.querySelectorAll('[data-target="call"]');
   const endCallBtn = document.getElementById("end-call-btn");
+  const endCallBtnMob = document.getElementById("end-call-btn-mob");
   const changeNumberBtn = document.getElementById("change-number-btn");
   const resendBtn = document.getElementById("resend-btn");
   const displayUserNumber = document.querySelectorAll(".display-user-number");
@@ -274,7 +275,11 @@ sections.forEach((section, i) => {
 
     callEndEvt();
   };
+  endCallBtnMob.onclick = (e) => {
+    e.preventDefault();
 
+    callEndEvt();
+  };
   // callMeInfoBtn.onclick = (e) => {
   //   e.preventDefault();
 
