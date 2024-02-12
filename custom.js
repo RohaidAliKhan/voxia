@@ -328,7 +328,7 @@ sections.forEach((section, i) => {
       user_input[key] = value;
     }
 
-    const res = await verifyApi({ phone: formData.get("Phone-Number") });
+    const res = await verifyApi({ phone: formData.get("Phone-Number-2") });
 
     if (res?.status && res.status === "success") {
       if (heroConfirmCont) {
@@ -346,8 +346,8 @@ sections.forEach((section, i) => {
     user_input["Verification-2"] = formData.getAll("Verification-2").join("");
 
     const { data } = await callApi({
-      name: user_input["Name"],
-      phone: user_input["Phone-Number"],
+      name: user_input["Name-2"],
+      phone: user_input["Phone-Number-2"],
       code: user_input["Verification-2"],
     });
 
