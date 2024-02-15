@@ -29,7 +29,7 @@ requestAnimationFrame(raf);
 
 // Header Background 
 gsap.to(".navbar.w-nav", {
-  backgroundColor: #000, 
+  backgroundColor: "#000", 
   scrollTrigger: {
     trigger: ".navbar.w-nav",
     start: "bottom 10%", 
