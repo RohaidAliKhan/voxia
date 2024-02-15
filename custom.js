@@ -27,40 +27,16 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// Sticky Sections
-const sections = gsap.utils.toArray(".sticky_section");
-sections.forEach((section, i) => {
-    // Check if the section is at an even index (alternating sections)
-  const isEven = i % 2 === 0;
-  ScrollTrigger.create({
-    trigger: section,
-    start: "top 10%",
-    end: "bottom 10%",
-    markers: false, // Remove this line in production
-    onToggle: ({ isActive }) => {
-      if (isActive && isEven) {
-        // gsap.to(":root", {
-        //   "--base-color-neutral--white-60": "black",
-        //   "--text-color-dark--text-primary": "black",
-        //   "--border-color--border-quarternary": "black",
-        //   "--base-color-neutral--white-24": "rgba(0,0,0,.24)",
-        // });
+// Header Background 
+gsap.to(".navbar.w-nav", {
+  backgroundColor: #000, 
+  scrollTrigger: {
+    trigger: ".navbar.w-nav",
+    start: "bottom 10%", 
+    toggleActions: "play none none reset"
+  }
+})
 
-        // gsap.to(".navbar_logo", { filter: "invert(1)" });
-        gsap.to(".navbar.w-nav", { backgroundColor: "black"})
-      } else {
-        // gsap.to(":root", {
-        //   "--base-color-neutral--white-60": "rgba(255,255,255,.6)",
-        //   "--text-color-dark--text-primary": "white",
-        //   "--border-color--border-quarternary": "rgba(255,255,255,.24)",
-        //   "--base-color-neutral--white-24": "rgba(255,255,255,.24)",
-        // });
-        // gsap.to(".navbar_logo", { filter: "invert(0)" });
-        gsap.to(".navbar.w-nav", { backgroundColor: "transparent"})
-      }
-    },
-  });
-});
 
 
 
